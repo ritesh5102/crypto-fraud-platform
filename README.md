@@ -65,6 +65,30 @@ Open http://localhost:5173
 
 FastAPI · React · Vite · TailwindCSS · MongoDB · scikit-learn · XGBoost · NetworkX · ccxt · WebSockets
 
+## Publish to GitHub
+
+Remote (configured): `https://github.com/AvishkarMadhwai123/crypto-fraud-intelligence.git`
+
+**Option A — GitHub CLI** (install from https://cli.github.com/):
+
+```powershell
+cd crypto-fraud-platform
+gh auth login
+.\scripts\push-github.ps1
+```
+
+**Option B — Manual:**
+
+1. Create an empty public repo: [crypto-fraud-intelligence](https://github.com/new?name=crypto-fraud-intelligence)
+2. Push:
+
+```powershell
+cd C:\Users\rites\OneDrive\Desktop\Crypto_Project\crypto-fraud-platform
+git push -u origin main
+```
+
+If you see `Repository not found`, the repo does not exist yet on GitHub — create it first (step 1).
+
 ## License
 
 MIT
