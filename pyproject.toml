@@ -1,5 +1,5 @@
 [tool.vercel]
-entrypoint = "backend/main:app"
+entrypoint = "api/index:app"
 
 [project]
 name = "crypto-fraud-platform"
