@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root { font-family: 'Outfit', system-ui, sans-serif; color: #e8edf4; background: #0a0e14; }
+body { margin: 0; min-height: 100vh; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+.card { @apply bg-surface-card border border-white/5 rounded-xl p-5; }
+.btn-primary { @apply px-4 py-2 rounded-lg bg-accent text-surface font-semibold hover:bg-accent-dim transition; }
+.btn-ghost { @apply px-4 py-2 rounded-lg border border-white/10 hover:bg-surface-hover transition; }
