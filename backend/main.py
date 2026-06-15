@@ -35,17 +35,21 @@ async def lifespan(app: FastAPI):
     logger.info("Starting %s [%s]", settings.app_name, settings.environment)
     seed_initial_data()
 
-    def produce_alert():
-        tx = generate_mock_transaction(fraud_bias=0.35)
-        return _analyze_transaction(tx).get("alert")
+    import os
+    if not os.environ.get("AWS_LAMBDA_FUNCTION_NAME"):
+        def produce_alert():
+            tx = generate_mock_transaction(fraud_bias=0.35)
+            return _analyze_transaction(tx).get("alert")
 
-    task = asyncio.create_task(alert_stream_task(produce_alert, interval=settings.ws_alert_interval))
-    yield
-    task.cancel()
-    try:
-        await task
-    except asyncio.CancelledError:
-        pass
+        task = asyncio.create_task(alert_stream_task(produce_alert, interval=settings.ws_alert_interval))
+        yield
+        task.cancel()
+        try:
+            await task
+        except asyncio.CancelledError:
+            pass
+    else:
+        yield
     logger.info("Shutdown complete")
 
 
